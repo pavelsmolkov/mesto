@@ -1,0 +1,11 @@
+.body {
+    background-color: #000000;
+    max-width: 80%;
+    margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .body {
+    max-width: 88.125vw;
+    }
+}

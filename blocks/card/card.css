@@ -1,0 +1,10 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 282px;
+  height: 361px;
+  position: relative;
+  border-radius: 10px;
+  margin: auto;
+  background-color: white;
+}
