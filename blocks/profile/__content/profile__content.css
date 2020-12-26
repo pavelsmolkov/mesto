@@ -1,7 +1,10 @@
 .profile__content {
   width: 336px;
   display: grid;
-  grid-template-columns: 10fr 1fr;
+  grid-template-areas:
+  "title button"
+  "subtitle .";
+  grid-template-columns: repeat(2, minmax(min-content, max-content));;
   grid-column-gap: 18px;
   grid-row-gap: 16px;
   /* max-width: 880px; */
@@ -10,4 +13,20 @@
   align-content: center;
   /* padding-right: 200px; */
   margin-right: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__content {
+  width: 255px;
+  margin: auto;
+  padding: 26px 0 54px 0;
+  grid-template-columns: 24px minmax(min-content, max-content) minmax(min-content, max-content);
+  grid-template-areas:
+  ". title button"
+  ". subtitle .";
+  grid-column-gap: 10px;
+  grid-row-gap: 14px;
+  /* margin-right: 0; */
+
+  }
 }

@@ -1,11 +1,5 @@
 .body {
     background-color: #000000;
-    max-width: 80%;
+    max-width: 100%;
     margin: auto;
-}
-
-@media screen and (max-width: 768px) {
-    .body {
-    max-width: 88.125vw;
-    }
 }

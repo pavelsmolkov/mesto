@@ -4,10 +4,17 @@
   margin: 0;
   cursor: pointer;
   /* transition: opacity .4s; */
-  background-image: url(../../../images/plusButton.png);
+  background-image: url(../../../images/plus.svg);
+  background-repeat: no-repeat;
   background-position: center;
   background-color: black;
   border: 1px white solid;
   /* margin-left: auto; */
   padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__add-button {
+    width: 88.125vw;
+  }
 }

@@ -9,4 +9,6 @@
   background-position: center;
   background-color: black;
   align-self: center;
+  padding: 0;
+  grid-area: button;
 }

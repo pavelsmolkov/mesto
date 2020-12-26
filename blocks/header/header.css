@@ -1,9 +1,17 @@
 .header {
   display: flex;
   align-items: flex-start;
-  margin: auto auto 40px auto;
+  margin: 45px auto 40px auto;
   max-width: 880px;
   min-height: 74px;
-  padding: 45px 0 0 0;
   border-bottom: 1px solid #545454;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 28px auto 32px 27px;
+    padding-left: 27px;
+    max-height: 24.4px;
+
+  }
 }
