@@ -5,6 +5,8 @@
   min-width: 21.76px;
   min-height: 18.13px;
   padding: 0;
+  border: none;
+  background-color: white;
 }
 
 .card__like:hover {
