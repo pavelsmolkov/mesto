@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./pages/index.css">
+  <
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место: Россия</title>
 </head>
@@ -71,16 +72,16 @@
     </footer>
   </div>
 
-  <div class="popup popup_opened">
-    <div class="popup__container">
+  <div class="popup">
+    <form class="popup__container">
       <div class="popup__close-button"></div>
 
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input class="popup__field popup__name" type="text" placeholder="Жак-Ив Кусто">
-      <input class="popup__field popup__job" type="text" placeholder="Исследователь океана">
+      <input class="popup__field popup__name" type="text" value="">
+      <input class="popup__field popup__job" type="text">
       <button type="submit" class="popup__save-button">Сохранить</button>
-    </div>
+    </form>
   </div>
-
+  <script src="../mesto/script.js"></script>
 </body>
 </html>
