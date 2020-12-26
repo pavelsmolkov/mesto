@@ -1,4 +1,3 @@
-
 let editButton = document.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
 let closeButton = document.querySelector('.popup__close-button');
@@ -11,7 +10,7 @@ function togglePopup() {
 editButton.addEventListener('click', togglePopup);
 closeButton.addEventListener('click', togglePopup);
 
-let nameInput = document.querySelector('.popup__name');// Воспользуйтесь инструментом .querySelector()
+let nameInput = document.querySelector('.popup__name');
 let profileTitle = document.querySelector('.profile__title');
 let jobInput = document.querySelector('.popup__job');
 let profileSubtitle = document.querySelector('.profile__subtitle');
@@ -25,20 +24,11 @@ let formElement = document.querySelector('.popup__container');
 // она никуда отправляться не будет
 function handleFormSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                        // Так мы можем определить свою логику отправки.
-                        // О том, как это делать, расскажем позже.
 
     // Находим поля формы в DOM
-    let nameInput = document.querySelector('.popup__name');// Воспользуйтесь инструментом .querySelector()
-    let jobInput = document.querySelector('.popup__job');// Воспользуйтесь инструментом .querySelector()
+    let nameInput = document.querySelector('.popup__name');
+    let jobInput = document.querySelector('.popup__job');
 
-    // Получите значение полей из свойства value
-    nameInput.value;
-    jobInput.value;
-    // Выберите элементы, куда должны быть вставлены значения полей
-    profileTitle;
-    profileSubtitle;
-    // Вставьте новые значения с помощью textContent
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
     togglePopup();

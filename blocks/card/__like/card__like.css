@@ -6,3 +6,11 @@
   min-height: 18.13px;
   padding: 0;
 }
+
+.card__like:hover {
+  opacity: 0.5;
+}
+
+.card__like:active {
+  background-image: url(../../../images/likeActive.svg);
+}

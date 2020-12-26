@@ -7,11 +7,9 @@
   grid-template-columns: repeat(2, minmax(min-content, max-content));;
   grid-column-gap: 18px;
   grid-row-gap: 16px;
-  /* max-width: 880px; */
   margin: 0;
   justify-content: start;
   align-content: center;
-  /* padding-right: 200px; */
   margin-right: auto;
 }
 
@@ -20,13 +18,11 @@
   width: 255px;
   margin: auto;
   padding: 26px 0 54px 0;
-  grid-template-columns: 24px minmax(min-content, max-content) minmax(min-content, max-content);
+  grid-template-columns: 18px minmax(min-content, max-content) minmax(min-content, max-content);
   grid-template-areas:
   ". title button"
   ". subtitle .";
   grid-column-gap: 10px;
   grid-row-gap: 14px;
-  /* margin-right: 0; */
-
   }
 }
