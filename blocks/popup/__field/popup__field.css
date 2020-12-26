@@ -1,0 +1,18 @@
+.popup__field {
+  padding: 0;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  height: 28px;
+  border: 0;
+  width: 100%;
+  min-height: 28px;
+  border-bottom: 1px solid #bcbcc4;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.popup__field:last-of-type {
+  margin-bottom: 0;
+}
