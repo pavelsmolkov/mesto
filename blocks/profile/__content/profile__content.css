@@ -18,7 +18,7 @@
   width: 255px;
   margin: auto;
   padding: 26px 0 54px 0;
-  grid-template-columns: 18px minmax(min-content, max-content) minmax(min-content, max-content);
+  grid-template-columns: 18px 59vw minmax(min-content, max-content);
   grid-template-areas:
   ". title button"
   ". subtitle .";
