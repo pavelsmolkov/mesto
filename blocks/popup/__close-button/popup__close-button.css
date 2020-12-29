@@ -1,5 +1,8 @@
 .popup__close-button {
   background-image: url(../../../images/closeButton.svg);
+  background-color: transparent;
+  border: none;
+  transform: rotate(-45deg);
   width: 40px;
   height: 40px;
   padding: 0;
@@ -19,5 +22,7 @@
   .popup__close-button {
     top: -45px;
     right: 0px;
+    width: 26px;
+    height: 26px;
   }
 }
