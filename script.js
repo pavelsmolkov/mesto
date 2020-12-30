@@ -5,8 +5,8 @@ let addButton = document.querySelector('.profile__add-button');
 let closeButton = document.querySelector('.popup__close-button');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
-let nameInput = document.querySelector('.popup__field_name_value');
-let jobInput = document.querySelector('.popup__field_job_value');
+let nameInput = document.querySelector('.popup__field_input_name');
+let jobInput = document.querySelector('.popup__field_input_job');
 
 function openPopup() {
   popup.classList.toggle('popup_opened');
@@ -23,9 +23,6 @@ function closePopup() {
 function handleFormSubmit (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-  // Находим поля формы в DOM
-  let nameInput = document.querySelector('.popup__field_name_value');
-  let jobInput = document.querySelector('.popup__field_job_value');
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
   closePopup();
