@@ -92,8 +92,11 @@ const initialCards = [
 const itemTemplate = document.querySelector('.item_template').content;
 const cards = document.querySelector('.cards');
 const cardImage = itemTemplate.querySelector('.card__image');
+const createButton = document.querySelector('.popup__create-button');
+const cardInputName = document.querySelector('.popup__field_input_place');
+const cardInputImage = document.querySelector('.popup__field_input_url');
 
-
+//рендер дефолтного набора карточек 
 function render() {
   initialCards.forEach(renderCard);
 }
@@ -102,6 +105,7 @@ function renderAdded() {
   const allCards = document.querySelectorAll('.cards');
 }
 
+//рендер новой добавленной карточки
 function renderCard(initialCards) {
   const htmlElement = itemTemplate.cloneNode(true);
   htmlElement.querySelector('.card__header').textContent = initialCards.name;
@@ -109,14 +113,6 @@ function renderCard(initialCards) {
   handleLike(htmlElement);
   cards.appendChild(htmlElement);
 }
-
-render();
-
-const createButton = document.querySelector('.popup__create-button');
-const cardInputName = document.querySelector('.popup__field_input_place');
-const cardInputImage = document.querySelector('.popup__field_input_url');
-
-createButton.addEventListener('click', handleAddCard);
 
 function handleAddCard (evt) {
   evt.preventDefault();
@@ -130,6 +126,7 @@ function handleAddCard (evt) {
 
 }
 
+//обработчик лайков
 function handleLike(htmlElement) {
   const cardLike = htmlElement.querySelector('.card__like');
   cardLike.addEventListener('click', function (evt) {
@@ -137,8 +134,12 @@ function handleLike(htmlElement) {
   });
 }
 
-
+//сброс содержимого попапа
 function resetPopup() {
   cardInputName.value = "";
   cardInputImage.value = "";
 }
+
+createButton.addEventListener('click', handleAddCard);
+
+render();
