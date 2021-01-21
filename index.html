@@ -44,20 +44,19 @@
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="editProfile">
-        <input class="popup__field popup__field_input_place" type="text" value="" name="nameValue">
-        <input class="popup__field popup__field_input_url" type="text" value="" name="urlValue">
+        <input class="popup__field popup__field_input_place" placeholder="Название" type="text" value="" name="nameValue">
+        <input class="popup__field popup__field_input_url" placeholder="Ссылка на картинку" type="text" value="" name="urlValue">
         <button type="submit" class="popup__save-button popup__create-button">Создать</button>
       </form>
     </div>
   </div>
-  <div class="popup popup__preview popup_opened">
+  <div class="popup popup_preview">
     <div class="popup__container popup__container_preview">
       <button type="button" class="popup__close-button"></button>
-      <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" class="popup__image"></img>
-      <p class="popup__imagetext">Карачаево-Черкессия</p>      
+      <img src="" alt="Изображение места" class="popup__image"></img>
+      <p class="popup__imagetext"></p>      
     </div>
   </div>
-
 
   <template class="item_template">
     <div class="card">
