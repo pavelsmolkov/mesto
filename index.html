@@ -50,9 +50,18 @@
       </form>
     </div>
   </div>
+  <div class="popup popup__preview popup_opened">
+    <div class="popup__container popup__container_preview">
+      <button type="button" class="popup__close-button"></button>
+      <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" class="popup__image"></img>
+      <p class="popup__imagetext">Карачаево-Черкессия</p>      
+    </div>
+  </div>
+
 
   <template class="item_template">
     <div class="card">
+      <button type="button" class="card__trash"></button>
       <img class="card__image" alt="Изображеие места">
       <div class="card__title">
         <h2 class="card__header">Text</h2>

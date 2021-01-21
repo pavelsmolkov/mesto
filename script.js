@@ -111,6 +111,7 @@ function renderCard(initialCards) {
   htmlElement.querySelector('.card__header').textContent = initialCards.name;
   htmlElement.querySelector('.card__image').setAttribute('src', initialCards.link); 
   handleLike(htmlElement);
+  handleDelete(htmlElement)
   cards.appendChild(htmlElement);
 }
 
@@ -120,6 +121,7 @@ function handleAddCard (evt) {
   htmlElement.querySelector('.card__header').textContent = cardInputName.value;
   htmlElement.querySelector('.card__image').setAttribute('src', cardInputImage.value);  
   handleLike(htmlElement);
+  handleDelete(htmlElement)
   cards.prepend(htmlElement);
   closePopup(popupAdd);
   renderAdded()
@@ -139,6 +141,16 @@ function resetPopup() {
   cardInputName.value = "";
   cardInputImage.value = "";
 }
+
+//обработчик удаления
+function handleDelete(htmlElement) {
+  const deleteButton = htmlElement.querySelector('.card__trash');
+  deleteButton.addEventListener('click', function (evt) {
+    evt.target.closest('.card').remove();
+  })
+}
+  
+
 
 createButton.addEventListener('click', handleAddCard);
 
