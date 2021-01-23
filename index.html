@@ -32,9 +32,9 @@
     <div class="popup__container">
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="editProfile">
-        <input class="popup__field popup__field_input_name" type="text" value="" name="nameValue">
-        <input class="popup__field popup__field_input_job" type="text" name="jobValue">
+      <form class="popup__form" name="editProfileForm">
+        <input class="popup__field popup__field_input_name" placeholder="Имя" type="text" value="" name="nameValue" required>
+        <input class="popup__field popup__field_input_job" placeholder="О себе" type="text" name="jobValue" required>
         <button type="submit" class="popup__save-button">Сохранить</button>
       </form>
     </div>
@@ -43,9 +43,9 @@
     <div class="popup__container">
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="editProfile">
-        <input class="popup__field popup__field_input_place" placeholder="Название" type="text" value="" name="nameValue">
-        <input class="popup__field popup__field_input_url" placeholder="Ссылка на картинку" type="text" value="" name="urlValue">
+      <form class="popup__form" name="addCardForm">
+        <input class="popup__field popup__field_input_place" placeholder="Название" type="text" value="" name="placeValue" required>
+        <input class="popup__field popup__field_input_url" placeholder="Ссылка на картинку"  value="" name="urlValue" type="url" required>
         <button type="submit" class="popup__save-button popup__create-button">Создать</button>
       </form>
     </div>
@@ -58,10 +58,10 @@
     </div>
   </div>
 
-  <template class="item_template">
+  <template class="item-template">
     <div class="card">
       <button type="button" class="card__trash"></button>
-      <img class="card__image" alt="Изображеие места">
+      <img class="card__image" alt="Изображение места">
       <div class="card__title">
         <h2 class="card__header">Text</h2>
         <button type="button" class="card__like"></button>
@@ -69,6 +69,7 @@
     </div>
   </template>
 
+  <script src="./scripts/initial-сards.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>
