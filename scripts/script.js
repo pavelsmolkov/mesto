@@ -20,9 +20,17 @@ const createButton = document.querySelector('.popup__create-button');
 const cardInputName = document.querySelector('.popup__field_input_place');
 const cardInputImage = document.querySelector('.popup__field_input_url');
 
-//универсальная функция открытия попапа
+//универсальная функция открытия попапа со слушателями на Esc и клик на оверлее
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', () => {
+    closePopup(popup);
+  });
+  document.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === 27) {
+      closePopup(popup);
+    }
+  });
 }
 
 //универсальная функция закрытия попапа
