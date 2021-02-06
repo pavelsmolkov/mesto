@@ -2,7 +2,7 @@ let formSelector = document.querySelector('.popup__form')
 let inputSelector = document.querySelector('.popup__field')
 const formError = formSelector.querySelector(`.${inputSelector.id}-error`);
 
-// Функция, которая проверяет валидность поля
+// проверка валидности поля
 const isValid = (formSelector, inputSelector) => {
   if (!inputSelector.validity.valid) {
     showInputError(formSelector, inputSelector, inputSelector.validationMessage);
@@ -11,7 +11,7 @@ const isValid = (formSelector, inputSelector) => {
   }
 };
 
-// Функция, которая добавляет класс с ошибкой
+// добавление класса с ошибкой
 const showInputError = (formSelector, inputSelector, errorMessage) => {
   const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
   inputSelector.classList.add('popup__field_type_error');
@@ -19,7 +19,7 @@ const showInputError = (formSelector, inputSelector, errorMessage) => {
   errorElement.classList.add('popup__error_visible');
 };
 
-// Функция, которая удаляет класс с ошибкой
+// удаление класса с ошибкой
 const hideInputError = (formSelector, inputSelector) => {
   const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
   inputSelector.classList.remove('popup__field_type_error');
@@ -35,18 +35,18 @@ const setEventListeners = (formSelector) => {
   const inputList = Array.from(formSelector.querySelectorAll('.popup__field'));
   const buttonElement = formSelector.querySelector('.popup__button');
   inputList.forEach((inputElement) => {
-    // каждому полю добавим обработчик события input
+    // добавление каждому полю обработчика события input
     inputElement.addEventListener('input', () => {
-      // Внутри колбэка вызовем isValid,
-      // передав ей форму и проверяемый элемент
+      // проверка на валидность
       isValid(formSelector, inputElement);
+      // изменение состояния активности кнопки формы
       toggleButtonState(inputList, buttonElement);
     });
   });
 };
 
 const enableValidation = () => {
-  // Найдём все формы с указанным классом в DOM,
+  // массив форм в DOM
   const formList = Array.from(document.querySelectorAll('.popup__form'));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
