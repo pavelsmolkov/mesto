@@ -23,22 +23,37 @@ const documentPage = document.querySelector('.page');
 
 //универсальная функция открытия попапа со слушателями на Esc и клик на оверлее
 function openPopup(popup) {
+  const submitButton = popup.querySelector('.popup__button');
+  inactiveFormButton(submitButton)
   popup.classList.add('popup_opened');
-  popup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup')) {
-      closePopup(popup);
-    }
-  });
-  document.addEventListener('keydown', function(evt) {
-    if (evt.code === 'Escape') {
-      closePopup(popup);
-    }
-  });
+  popup.addEventListener('click', closePopupByClick);
+  document.addEventListener('keydown', closePopupEsc);
+}
+
+function inactiveFormButton(submitButton) {
+  submitButton.setAttribute("disabled", true);
+  submitButton.classList.add('popup__button_disabled');
+};
+
+function closePopupByClick(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.target.classList.contains('popup')) {
+    closePopup(popupOpened);
+  }
+}
+
+function closePopupEsc(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.code === 'Escape') {
+    closePopup(popupOpened);
+  }
 }
 
 //универсальная функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', closePopupByClick);
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
 //добавление новой карточки в грид

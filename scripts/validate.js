@@ -1,5 +1,5 @@
-let formSelector = document.querySelector('.popup__form')
-let inputSelector = document.querySelector('.popup__field')
+const formSelector = document.querySelector('.popup__form')
+const inputSelector = document.querySelector('.popup__field')
 const formError = formSelector.querySelector(`.${inputSelector.id}-error`);
 
 // проверка валидности поля
@@ -78,7 +78,10 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('popup__button_disabled');
+    buttonElement.setAttribute('disabled', true);
   } else {
     buttonElement.classList.remove('popup__button_disabled');
+    buttonElement.removeAttribute('disabled');
   }
 };
+
