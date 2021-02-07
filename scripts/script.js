@@ -24,7 +24,9 @@ const documentPage = document.querySelector('.page');
 //универсальная функция открытия попапа со слушателями на Esc и клик на оверлее
 function openPopup(popup) {
   const submitButton = popup.querySelector('.popup__button');
-  inactiveFormButton(submitButton)
+  if (submitButton) {
+    inactiveFormButton(submitButton);
+  }
   popup.classList.add('popup_opened');
   popup.addEventListener('click', closePopupByClick);
   document.addEventListener('keydown', closePopupEsc);
