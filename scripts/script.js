@@ -132,7 +132,6 @@ closeButtonPreview.addEventListener('click', () => closePopup(popupPreview));
 //слушатель кнопки создания новой карточки
 addCardForm.addEventListener('submit', handleAddCard);
 
-console.log(Array.from(document.querySelectorAll('.popup__form')));
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((formElement) => {
   formElement.addEventListener('submit', function (evt) {
