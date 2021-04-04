@@ -1,4 +1,4 @@
-import { arr, sq } from './validate.js';
+// import { arr, sq } from './validate.js';
 
 
 const popupEdit = document.querySelector('.popup_edit');
@@ -24,14 +24,7 @@ const cardInputName = document.querySelector('.popup__field_input_place');
 const cardInputImage = document.querySelector('.popup__field_input_url');
 const documentPage = document.querySelector('.page');
 
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__field',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__field_type_error',
-  errorClass: 'popup__error_visible'
-};
+
 
 
 class Card {
@@ -146,10 +139,10 @@ function addCard(card) {
   cardsContainer.prepend(card.createCard());
 }
 
-//обработчик добавления новой карточки
+// обработчик добавления новой карточки
 function handleAddCard (evt) {
   evt.preventDefault();
-  card = {
+  let card = {
     name: cardInputName.value,
     link: cardInputImage.value
   };
