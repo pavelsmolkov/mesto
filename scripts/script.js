@@ -162,6 +162,7 @@ addCardForm.addEventListener('submit', handleAddCard);
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((formElement) => {
+  console.log(formElement);
   formElement.addEventListener('submit', function (evt) {
     evt.preventDefault();
   });
