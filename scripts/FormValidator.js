@@ -59,6 +59,10 @@ class FormValidator {
         });
     };
 
+    disableSubmitButtonByDefault() {
+        this._form.querySelector(this._submitButtonSelector).classList.add(this._inactiveButtonClass);
+        this._form.querySelector(this._submitButtonSelector).setAttribute('disabled', true);    }
+
     enableValidation() {
         // массив форм в DOM
         // const formList = Array.from(document.querySelectorAll(this._formSelector));
@@ -68,6 +72,7 @@ class FormValidator {
                 evt.preventDefault();
             });
             this._setEventListeners(this._form);
+            // this._disableSubmitButtonByDefault();
         }
 
 

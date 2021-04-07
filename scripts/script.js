@@ -64,30 +64,32 @@ const ESC = 'Escape';
 
 //универсальная функция открытия попапа со слушателями на Esc и клик на оверлее
 function openPopup(popup) {
-  const submitButton = popup.querySelector('.popup__button');
-  if (submitButton) {
-    inactiveFormButton(submitButton);
-  }
+  // const submitButton = popup.querySelector('.popup__button');
+  // if (submitButton) {
+  //   inactiveFormButton(submitButton);
+  // }
+  // popup.disableSubmitButtonByDefault();
   popup.classList.add('popup_opened');
   popup.addEventListener('click', closePopupByClick);
   document.addEventListener('keydown', closePopupEsc);
 }
 
-function inactiveFormButton(submitButton) {
-  submitButton.setAttribute("disabled", true);
-  submitButton.classList.add('popup__button_disabled');
-}
+// function inactiveFormButton(submitButton) {
+//   // submitButton.setAttribute("disabled", true);
+//   // submitButton.classList.add('popup__button_disabled');
+//   submitButton.disableSubmitButton()
+// }
 
 function closePopupByClick(evt) {
   const popupOpened = document.querySelector('.popup_opened');
   if (evt.target.classList.contains('popup')) {
-    closePopup(popupOpened);
+    closePopup(evt.target);
   }
 }
 
 function closePopupEsc(evt) {
-  const popupOpened = document.querySelector('.popup_opened');
   if (evt.code === ESC) {
+    const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
 }
@@ -107,11 +109,16 @@ function handleProfileFormSubmit (evt) {
   closePopup(popupEdit);
 }
 
+function createCard(item) {
+  const newCard = new Card(item, '.item-template', openPopup, popupImage, popupText, popupPreview);
+  return newCard.createCard();
+}
+
 //отрисовка исходного массива дефолтных карточек
 initialCards.forEach( (card) => {
-  const newCard = new Card(card, '.item-template', openPopup, popupImage, popupText, popupPreview);
-  const cardElement = newCard.createCard();
-  cardsContainer.append(cardElement);
+  // const newCard = new Card(card, '.item-template', openPopup, popupImage, popupText, popupPreview);
+  // const cardElement = newCard.createCard();
+  cardsContainer.append(createCard(card));
 });
 
 // добавление новой карточки в грид
@@ -127,8 +134,9 @@ function handleAddCard (evt) {
     link: cardInputImage.value
   };
 
-  const newCard = new Card (card, '.item-template', openPopup, popupImage, popupText, popupPreview);
-  addCard(newCard);
+  cardsContainer.prepend(createCard(card));
+  // const newCard = new Card (card, '.item-template', openPopup, popupImage, popupText, popupPreview);
+  // addCard(newCard);
   closePopup(popupAdd);
 }
 
