@@ -64,24 +64,12 @@ const ESC = 'Escape';
 
 //универсальная функция открытия попапа со слушателями на Esc и клик на оверлее
 function openPopup(popup) {
-  // const submitButton = popup.querySelector('.popup__button');
-  // if (submitButton) {
-  //   inactiveFormButton(submitButton);
-  // }
-  // popup.disableSubmitButtonByDefault();
   popup.classList.add('popup_opened');
   popup.addEventListener('click', closePopupByClick);
   document.addEventListener('keydown', closePopupEsc);
 }
 
-// function inactiveFormButton(submitButton) {
-//   // submitButton.setAttribute("disabled", true);
-//   // submitButton.classList.add('popup__button_disabled');
-//   submitButton.disableSubmitButton()
-// }
-
 function closePopupByClick(evt) {
-  const popupOpened = document.querySelector('.popup_opened');
   if (evt.target.classList.contains('popup')) {
     closePopup(evt.target);
   }
@@ -116,15 +104,8 @@ function createCard(item) {
 
 //отрисовка исходного массива дефолтных карточек
 initialCards.forEach( (card) => {
-  // const newCard = new Card(card, '.item-template', openPopup, popupImage, popupText, popupPreview);
-  // const cardElement = newCard.createCard();
   cardsContainer.append(createCard(card));
 });
-
-// добавление новой карточки в грид
-function addCard(card) {
-  cardsContainer.prepend(card.createCard());
-}
 
 // обработчик добавления новой карточки
 function handleAddCard (evt) {
@@ -135,8 +116,6 @@ function handleAddCard (evt) {
   };
 
   cardsContainer.prepend(createCard(card));
-  // const newCard = new Card (card, '.item-template', openPopup, popupImage, popupText, popupPreview);
-  // addCard(newCard);
   closePopup(popupAdd);
 }
 
@@ -170,7 +149,6 @@ addCardForm.addEventListener('submit', handleAddCard);
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((formElement) => {
-  console.log(formElement);
   formElement.addEventListener('submit', function (evt) {
     evt.preventDefault();
   });
