@@ -47,11 +47,6 @@ class FormValidator {
         });
     }
 
-    // _disableSubmitButtonByDefault() {
-    //     this._form.querySelector(this._submitButtonSelector).classList.add(this._inactiveButtonClass);
-    //     this._form.querySelector(this._submitButtonSelector).setAttribute('disabled', true);
-    // }
-
     enableValidation() {
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
