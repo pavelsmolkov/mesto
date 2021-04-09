@@ -151,6 +151,7 @@ const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((formElement) => {
   formElement.addEventListener('submit', function (evt) {
     evt.preventDefault();
+    formValidate.disableSubmitButton();
   });
   const formValidate = new FormValidator(config, formElement);
   formValidate.enableValidation();
