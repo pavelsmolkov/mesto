@@ -154,4 +154,5 @@ formList.forEach((formElement) => {
   });
   const formValidate = new FormValidator(config, formElement);
   formValidate.enableValidation();
+  formValidate.disableSubmitButton();
 });
