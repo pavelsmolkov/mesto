@@ -1,6 +1,9 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 import Section from './Section.js';
+import Popup from './Popup.js';
+
+export { ESC };
 
 const config = {
   formSelector: '.popup__form',
@@ -65,12 +68,52 @@ const ESC = 'Escape';
 
 
 const defaultCardList = new Section({
-  data: initialCards,
+  items: initialCards,
   renderer: (item) => {
-    const newCard = new Card(item, '.item-template');
+    const newCard = new Card(item, '.item-template', openPopup, popupImage, popupText, popupPreview);
     const cardElement = newCard.createCard();
-    defaultCardList.setItem(cardElement);
+    defaultCardList.addItem(cardElement);
   }}, '.cards');
+
+// const data = [
+//     {
+//       name: 'Архыз!!',
+//       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+//     }];
+
+
+
+
+// const newCard = new Card(data, '.item-template', openPopup, popupImage, popupText, popupPreview);
+// const cardElement = newCard.createCard();
+// userCard.addItem(cardElement);
+
+// обработчик добавления новой карточки
+function handleAddCard () {
+  let data = [{
+    name: cardInputName.value,
+    link: cardInputImage.value
+  }];
+  closePopup(popupAdd);
+  return data;
+}
+
+// слушатель кнопки создания новой карточки
+addCardForm.addEventListener('submit', () => {
+  const data = handleAddCard();
+
+  const userCard = new Section({
+    items: data,
+    renderer: (data) => {
+      const newCard = new Card(data, '.item-template', openPopup, popupImage, popupText, popupPreview);
+      const cardElement = newCard.createCard();
+      userCard.addItem(cardElement);
+    }}, '.cards');
+
+  userCard.renderItems();
+
+});
+
 
 //универсальная функция открытия попапа со слушателями на Esc и клик на оверлее
 export function openPopup(popup) {
@@ -112,26 +155,11 @@ function handleProfileFormSubmit (evt) {
 //   return newCard.createCard();
 // }
 
-//отрисовка исходного массива дефолтных карточек
-// initialCards.forEach( (card) => {
-//   cardsContainer.append(createCard(card));
-// });
 
-// обработчик добавления новой карточки
-function handleAddCard (evt) {
-  evt.preventDefault();
-  let card = {
-    name: cardInputName.value,
-    link: cardInputImage.value
-  };
-
-  cardsContainer.prepend(createCard(card));
-  closePopup(popupAdd);
-}
 
 // слушатель кнопки редактирования профиля
 editButton.addEventListener('click', () => {
-  openPopup(popupEdit);
+  editPopup.open();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 });
@@ -154,8 +182,9 @@ closeButtonAdd.addEventListener('click', () => closePopup(popupAdd));
 //слушатель кнопки закрытия попапа с превью картинки
 closeButtonPreview.addEventListener('click', () => closePopup(popupPreview));
 
-//слушатель кнопки создания новой карточки
-addCardForm.addEventListener('submit', handleAddCard);
+
+
+
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((formElement) => {
@@ -169,3 +198,11 @@ formList.forEach((formElement) => {
 });
 
 defaultCardList.renderItems();
+
+
+const editPopup = new Popup('.popup_add');
+// editPopup.close();
+editPopup.setEventListeners();
+
+// editPopup.addEventListener('click', closePopupByClick);
+// document.addEventListener('keydown', closePopupEsc);
