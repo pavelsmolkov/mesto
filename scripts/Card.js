@@ -3,10 +3,6 @@ export default class Card {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
-        // this._openPopup = openPopup;
-        // this._popupImage = popupImage;
-        // this._popupText = popupText;
-        // this._popupPreview = popupPreview;
         this._handleImageClick = handleImageClick;
     }
 
@@ -29,16 +25,6 @@ export default class Card {
         this._handleDelete();
         return this._element;
     }
-
-    // _handleImageClick(element, name, link, openPopup, popupImage, popupText, popupPreview) {
-    //     const cardImage = element.querySelector('.card__image');
-    //     cardImage.addEventListener('click', function (evt) {
-    //         popupImage.src = link;
-    //         popupText.textContent = name;
-    //         popupImage.setAttribute('alt', name);
-    //         openPopup(popupPreview);
-    //     });
-    // }
 
     _handleLike() {
         const cardLike = this._element.querySelector('.card__like');

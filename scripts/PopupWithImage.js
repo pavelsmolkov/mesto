@@ -8,8 +8,6 @@ export default class PopupWithImage extends Popup {
     }
 
     open(link, name) {
-        //тут добавить к экземпляру класса попапа нужные атрибуты
-        //добавить селектор для открытого попапа
         popupImage.src = link;
         popupText.textContent = name;
         popupImage.setAttribute('alt', name);

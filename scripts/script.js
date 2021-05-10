@@ -111,34 +111,6 @@ function handleImageClick(cardElement, name, link) {
   });
 }
 
-
-//универсальная функция открытия попапа со слушателями на Esc и клик на оверлее
-// export function openPopup(popup) {
-//   popup.classList.add('popup_opened');
-//   popup.addEventListener('click', closePopupByClick);
-//   document.addEventListener('keydown', closePopupEsc);
-// }
-
-// function closePopupByClick(evt) {
-//   if (evt.target.classList.contains('popup')) {
-//     closePopup(evt.target);
-//   }
-// }
-
-// function closePopupEsc(evt) {
-//   if (evt.code === ESC) {
-//     const popupOpened = document.querySelector('.popup_opened');
-//     closePopup(popupOpened);
-//   }
-// }
-
-//универсальная функция закрытия попапа
-// function closePopup(popup) {
-//   popup.classList.remove('popup_opened');
-//   popup.removeEventListener('click', closePopupByClick);
-//   document.removeEventListener('keydown', closePopupEsc);
-// }
-
 //обработчик отправки формы профиля
 function handleProfileFormSubmit (evt) {
   evt.preventDefault();
@@ -191,8 +163,3 @@ editPopup.setEventListeners();
 
 const addPopup = new Popup('.popup_add');
 addPopup.setEventListeners();
-
-// const previewPopup = new Popup('.popup_preview');
-// previewPopup.setEventListeners();
-
-
