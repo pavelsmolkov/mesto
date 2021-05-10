@@ -1,12 +1,13 @@
 export default class Card {
-    constructor(data, cardSelector, openPopup, popupImage, popupText, popupPreview) {
+    constructor(data, cardSelector, handleImageClick) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
-        this._openPopup = openPopup;
-        this._popupImage = popupImage;
-        this._popupText = popupText;
-        this._popupPreview = popupPreview;
+        // this._openPopup = openPopup;
+        // this._popupImage = popupImage;
+        // this._popupText = popupText;
+        // this._popupPreview = popupPreview;
+        this._handleImageClick = handleImageClick;
     }
 
     _getTemplate() {
@@ -23,21 +24,21 @@ export default class Card {
         this._element.querySelector('.card__header').textContent = this._name;
         this._element.querySelector('.card__image').setAttribute('src', this._link);
         this._element.querySelector('.card__image').setAttribute('alt', this._name);
-        this._handleImageClick(this._element, this._name, this._link, this._openPopup, this._popupImage, this._popupText, this._popupPreview);
+        this._handleImageClick(this._element, this._name, this._link);
         this._handleLike();
         this._handleDelete();
         return this._element;
     }
 
-    _handleImageClick(element, name, link, openPopup, popupImage, popupText, popupPreview) {
-        const cardImage = element.querySelector('.card__image');
-        cardImage.addEventListener('click', function (evt) {
-            popupImage.src = link;
-            popupText.textContent = name;
-            popupImage.setAttribute('alt', name);
-            openPopup(popupPreview);
-        });
-    }
+    // _handleImageClick(element, name, link, openPopup, popupImage, popupText, popupPreview) {
+    //     const cardImage = element.querySelector('.card__image');
+    //     cardImage.addEventListener('click', function (evt) {
+    //         popupImage.src = link;
+    //         popupText.textContent = name;
+    //         popupImage.setAttribute('alt', name);
+    //         openPopup(popupPreview);
+    //     });
+    // }
 
     _handleLike() {
         const cardLike = this._element.querySelector('.card__like');
