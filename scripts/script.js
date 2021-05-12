@@ -3,6 +3,7 @@ import FormValidator from './FormValidator.js';
 import Section from './Section.js';
 import Popup from './Popup.js';
 import PopupWithImage from './PopupWithImage.js';
+import PopupWithForm from "./PopupWithForm.js";
 
 
 export { ESC };
@@ -161,5 +162,5 @@ defaultCardList.renderItems();
 const editPopup = new Popup('.popup_edit');
 editPopup.setEventListeners();
 
-const addPopup = new Popup('.popup_add');
+const addPopup = new PopupWithForm('.popup_add');
 addPopup.setEventListeners();
