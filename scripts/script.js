@@ -159,8 +159,8 @@ formList.forEach((formElement) => {
 defaultCardList.renderItems();
 
 
-const editPopup = new Popup('.popup_edit');
+const editPopup = new PopupWithForm('.popup_edit', handleProfileFormSubmit);
 editPopup.setEventListeners();
 
-const addPopup = new PopupWithForm('.popup_add');
+const addPopup = new Popup('.popup_add');
 addPopup.setEventListeners();
