@@ -4,6 +4,7 @@ import Section from './Section.js';
 import Popup from './Popup.js';
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 
 
 export { ESC };
@@ -68,7 +69,10 @@ const cardInputName = document.querySelector('.popup__field_input_place');
 const cardInputImage = document.querySelector('.popup__field_input_url');
 const documentPage = document.querySelector('.page');
 const ESC = 'Escape';
-
+const userInputSelector = {
+  nameUserSelector: '.profile__title',
+  jobUserSelector: '.profile__subtitle'
+}
 
 const defaultCardList = new Section({
   items: initialCards,
@@ -114,19 +118,22 @@ function handleImageClick(cardElement, name, link) {
   });
 }
 
+const userInfo = new UserInfo(userInputSelector);
+
 //обработчик отправки формы профиля
 function handleProfileFormSubmit (evt) {
   evt.preventDefault();
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
+  userInfo.setUserInfo(nameInput.value, jobInput.value);
   editPopup.close();
 }
 
+
 // слушатель кнопки редактирования профиля
 editButton.addEventListener('click', () => {
+  const currentUserInfo = userInfo.getUserInfo();
+  nameInput.value = currentUserInfo.name;
+  jobInput.value = currentUserInfo.job;
   editPopup.open();
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
 });
 
 //слушатель кнопки редактирования профиля (Сохранить)
