@@ -90,7 +90,9 @@ function handleAddCard () {
 }
 
 // слушатель кнопки создания новой карточки
-addCardForm.addEventListener('submit', () => {
+// addCardForm.addEventListener('submit', handleAddCardFormSubmit);
+
+function handleAddCardFormSubmit() {
   const data = handleAddCard();
   const userCard = new Section({
     items: data,
@@ -100,7 +102,7 @@ addCardForm.addEventListener('submit', () => {
       userCard.addItem(cardElement);
     }}, '.cards');
   userCard.renderItems();
-});
+}
 
 const previewPopup = new PopupWithImage('.popup_preview');
 previewPopup.setEventListeners();
@@ -162,5 +164,5 @@ defaultCardList.renderItems();
 const editPopup = new PopupWithForm('.popup_edit', handleProfileFormSubmit);
 editPopup.setEventListeners();
 
-const addPopup = new Popup('.popup_add');
+const addPopup = new PopupWithForm('.popup_add', handleAddCardFormSubmit);
 addPopup.setEventListeners();

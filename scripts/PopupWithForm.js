@@ -51,9 +51,10 @@ export default class PopupWithForm extends Popup {
             }
         });
         document.addEventListener('keydown', this._handleEscClose);
+        document.addEventListener('submit', this._submitFormCallback);
 
         // createButton.addEventListener('submit', this._handleAddCard);
-        console.log(this._getInputValues());
+        // console.log(this._getInputValues());
     }
 
 }
