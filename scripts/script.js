@@ -89,7 +89,7 @@ function handleAddCard () {
     name: cardInputName.value,
     link: cardInputImage.value
   }];
-  addPopup.close();
+  addPopup.close(addCardForm);
   return data;
 }
 
@@ -124,11 +124,10 @@ const userInfo = new UserInfo(userInputSelector);
 function handleProfileFormSubmit (evt) {
   evt.preventDefault();
   userInfo.setUserInfo(nameInput.value, jobInput.value);
-  editPopup.close();
+  editPopup.close(editProfileForm);
 }
 
-
-// слушатель кнопки редактирования профиля
+// слушатель кнопки открытия попапа редактирования профиля
 editButton.addEventListener('click', () => {
   const currentUserInfo = userInfo.getUserInfo();
   nameInput.value = currentUserInfo.name;
@@ -136,8 +135,8 @@ editButton.addEventListener('click', () => {
   editPopup.open();
 });
 
-//слушатель кнопки редактирования профиля (Сохранить)
-editProfileForm.addEventListener('submit', handleProfileFormSubmit);
+//слушатель кнопки сабмита формы редактирования профиля (Сохранить)
+// editProfileForm.addEventListener('submit', handleProfileFormSubmit);
 
 //слушатель кнопки добавления новой карточки (Создать)
 addButton.addEventListener('click', () => {
@@ -146,10 +145,10 @@ addButton.addEventListener('click', () => {
 });
 
 //слушатель кнопки закрытия попапа редактирования профиля
-closeButtonEdit.addEventListener('click', () => editPopup.close());
+closeButtonEdit.addEventListener('click', () => editPopup.close(editProfileForm));
 
 //слушатель кнопки закрытия попапа новой карточки
-closeButtonAdd.addEventListener('click', () => addPopup.close());
+closeButtonAdd.addEventListener('click', () => addPopup.close(addCardForm));
 
 //слушатель кнопки закрытия попапа с превью картинки
 closeButtonPreview.addEventListener('click', () => previewPopup.close());
@@ -166,7 +165,6 @@ formList.forEach((formElement) => {
 });
 
 defaultCardList.renderItems();
-
 
 const editPopup = new PopupWithForm('.popup_edit', handleProfileFormSubmit);
 editPopup.setEventListeners();

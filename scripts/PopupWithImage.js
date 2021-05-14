@@ -11,8 +11,6 @@ export default class PopupWithImage extends Popup {
         popupImage.src = link;
         popupText.textContent = name;
         popupImage.setAttribute('alt', name);
-
         document.querySelector(this._popupSelector).classList.add('popup_opened');
     }
-
 }
