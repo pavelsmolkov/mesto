@@ -3,7 +3,7 @@ import { ESC } from '../scripts/script.js'
 export default class Popup {
     constructor(popupSelector) {
         this._popupSelector = popupSelector;
-        this._handleEscClose = this._handleEscClose.bind(this);
+        // this._handleEscClose = this._handleEscClose.bind(this);
     }
 
     open() {
@@ -20,12 +20,17 @@ export default class Popup {
                 this.close();
             }
         });
-        document.addEventListener('keydown', this._handleEscClose);
+        document.addEventListener('keydown', (evt) => {
+            if (evt.code === ESC) {
+                this.close();
+            }
+        });
+        // document.addEventListener('keydown', this._handleEscClose);
     }
 
-    _handleEscClose(evt) {
-        if (evt.code === ESC) {
-            this.close();
-        }
-    }
+//     _handleEscClose(evt) {
+//         if (evt.code === ESC) {
+//             this.close();
+//         }
+//     }
 }

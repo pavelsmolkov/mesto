@@ -6,8 +6,7 @@ import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
 
-
-export { ESC };
+export { ESC, addCardForm, editProfileForm };
 
 const config = {
   formSelector: '.popup__form',
@@ -74,30 +73,25 @@ const userInputSelector = {
   jobUserSelector: '.profile__subtitle'
 }
 
+const addPopup = new PopupWithForm('.popup_add', handleAddCardFormSubmit);
+addPopup.setEventListeners();
+
 const defaultCardList = new Section({
   items: initialCards,
   renderer: (item) => {
     const newCard = new Card(item, '.item-template', handleImageClick);
-    // const newCard = new Card(item, '.item-template', openPopup, popupImage, popupText, popupPreview);
     const cardElement = newCard.createCard();
     defaultCardList.addItem(cardElement);
   }}, '.cards');
 
-// обработчик добавления новой карточки
-function handleAddCard () {
-  let data = [{
-    name: cardInputName.value,
-    link: cardInputImage.value
-  }];
-  addPopup.close(addCardForm);
-  return data;
-}
+defaultCardList.renderItems();
 
 // слушатель кнопки создания новой карточки
 // addCardForm.addEventListener('submit', handleAddCardFormSubmit);
 
 function handleAddCardFormSubmit() {
-  const data = handleAddCard();
+  const data = addPopup.close(addCardForm);
+
   const userCard = new Section({
     items: data,
     renderer: (data) => {
@@ -105,7 +99,6 @@ function handleAddCardFormSubmit() {
       const cardElement = newCard.createCard();
       userCard.addItem(cardElement);
     }}, '.cards');
-  userCard.renderItems();
 }
 
 const previewPopup = new PopupWithImage('.popup_preview');
@@ -145,10 +138,10 @@ addButton.addEventListener('click', () => {
 });
 
 //слушатель кнопки закрытия попапа редактирования профиля
-closeButtonEdit.addEventListener('click', () => editPopup.close(editProfileForm));
+closeButtonEdit.addEventListener('click', () => editPopup.close());
 
 //слушатель кнопки закрытия попапа новой карточки
-closeButtonAdd.addEventListener('click', () => addPopup.close(addCardForm));
+closeButtonAdd.addEventListener('click', () => addPopup.close());
 
 //слушатель кнопки закрытия попапа с превью картинки
 closeButtonPreview.addEventListener('click', () => previewPopup.close());
@@ -164,10 +157,6 @@ formList.forEach((formElement) => {
   formValidate.disableSubmitButton();
 });
 
-defaultCardList.renderItems();
-
 const editPopup = new PopupWithForm('.popup_edit', handleProfileFormSubmit);
 editPopup.setEventListeners();
 
-const addPopup = new PopupWithForm('.popup_add', handleAddCardFormSubmit);
-addPopup.setEventListeners();
