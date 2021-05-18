@@ -10,7 +10,16 @@ export default class Section {
         // cardsContainer.prepend(createCard(card));
     }
 
+    addUserItem(element) {
+        this._container.prepend(element);
+        // cardsContainer.prepend(createCard(card));
+    }
+
     renderItems() {
         this._renderedItems.forEach(item => this._renderer(item))
+    }
+
+    renderItem() {
+        this._renderer(this._renderedItems);
     }
 }

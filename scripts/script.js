@@ -92,13 +92,18 @@ defaultCardList.renderItems();
 function handleAddCardFormSubmit() {
   const data = addPopup.close(addCardForm);
 
+  data.name = data.placeValue;
+  data.link = data.urlValue;
+
   const userCard = new Section({
     items: data,
     renderer: (data) => {
       const newCard = new Card(data, '.item-template', handleImageClick);
       const cardElement = newCard.createCard();
-      userCard.addItem(cardElement);
+      userCard.addUserItem(cardElement);
     }}, '.cards');
+
+  userCard.renderItem();
 }
 
 const previewPopup = new PopupWithImage('.popup_preview');
