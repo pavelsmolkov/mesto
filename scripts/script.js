@@ -45,6 +45,9 @@ const initialCards = [
   }
 ];
 
+// popup.removeEventListener('click', closePopupByClick);
+
+
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 export const popupPreview = document.querySelector('.popup_preview');
@@ -149,7 +152,14 @@ closeButtonEdit.addEventListener('click', () => editPopup.close());
 closeButtonAdd.addEventListener('click', () => addPopup.close());
 
 //слушатель кнопки закрытия попапа с превью картинки
-closeButtonPreview.addEventListener('click', () => previewPopup.close());
+closeButtonPreview.addEventListener('click', () => {
+  previewPopup.close()
+
+
+
+
+
+});
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((formElement) => {
