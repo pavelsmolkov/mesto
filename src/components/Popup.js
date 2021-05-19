@@ -1,4 +1,4 @@
-import { ESC } from '../index.js'
+import { ESC } from '../pages/index';
 
 export default class Popup {
     constructor(popupSelector) {

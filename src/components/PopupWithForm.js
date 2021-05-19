@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { addCardForm, editProfileForm } from "../index.js";
+import { addCardForm, editProfileForm } from "../pages/index";
 
 export default class PopupWithForm extends Popup {
 
