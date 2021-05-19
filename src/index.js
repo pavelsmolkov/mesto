@@ -1,10 +1,11 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import Section from './Section.js';
-import Popup from './Popup.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
+import './pages/index.css';
+import Card from './scripts/Card.js';
+import FormValidator from './scripts/FormValidator.js';
+import Section from './scripts/Section.js';
+import Popup from './scripts/Popup.js';
+import PopupWithImage from './scripts/PopupWithImage.js';
+import PopupWithForm from "./scripts/PopupWithForm.js";
+import UserInfo from "./scripts/UserInfo.js";
 
 export { ESC, addCardForm, editProfileForm };
 
@@ -44,9 +45,6 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-// popup.removeEventListener('click', closePopupByClick);
-
 
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
@@ -88,9 +86,6 @@ const defaultCardList = new Section({
   }}, '.cards');
 
 defaultCardList.renderItems();
-
-// слушатель кнопки создания новой карточки
-// addCardForm.addEventListener('submit', handleAddCardFormSubmit);
 
 function handleAddCardFormSubmit() {
   const data = addPopup.close(addCardForm);
@@ -136,9 +131,6 @@ editButton.addEventListener('click', () => {
   editPopup.open();
 });
 
-//слушатель кнопки сабмита формы редактирования профиля (Сохранить)
-// editProfileForm.addEventListener('submit', handleProfileFormSubmit);
-
 //слушатель кнопки добавления новой карточки (Создать)
 addButton.addEventListener('click', () => {
   // document.forms.addCardForm.reset();
@@ -154,11 +146,6 @@ closeButtonAdd.addEventListener('click', () => addPopup.close());
 //слушатель кнопки закрытия попапа с превью картинки
 closeButtonPreview.addEventListener('click', () => {
   previewPopup.close()
-
-
-
-
-
 });
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));
@@ -174,4 +161,3 @@ formList.forEach((formElement) => {
 
 const editPopup = new PopupWithForm('.popup_edit', handleProfileFormSubmit);
 editPopup.setEventListeners();
-

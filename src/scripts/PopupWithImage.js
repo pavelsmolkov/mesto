@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { popupImage, popupText } from "./script.js";
+import { popupImage, popupText } from "../index.js";
 
 export default class PopupWithImage extends Popup {
 

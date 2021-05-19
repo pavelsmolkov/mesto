@@ -1,4 +1,4 @@
-import { ESC } from '../scripts/script.js'
+import { ESC } from '../index.js'
 
 export default class Popup {
     constructor(popupSelector) {
@@ -36,10 +36,4 @@ export default class Popup {
     _removeEventListenerESC() {
         document.removeEventListener('keydown', this._handleEscClose.bind(this));
     }
-
-//     _handleEscClose(evt) {
-//         if (evt.code === ESC) {
-//             this.close();
-//         }
-//     }
 }

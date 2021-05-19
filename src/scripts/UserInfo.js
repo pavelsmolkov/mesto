@@ -15,5 +15,4 @@ export default class UserInfo {
         document.querySelector(this._nameUserSelector).textContent = nameValue;
         document.querySelector(this._jobUserSelector).textContent = jobValue;
     }
-
 }

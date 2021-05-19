@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { addCardForm, editProfileForm } from "./script.js";
+import { addCardForm, editProfileForm } from "../index.js";
 
 export default class PopupWithForm extends Popup {
 
@@ -31,19 +31,7 @@ export default class PopupWithForm extends Popup {
     }
 
     setEventListeners() {
-        // document.querySelector(this._popupSelector).addEventListener('click', (evt) => {
-        //     if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
-        //         this.close();
-        //     }
-        // });
-        // document.addEventListener('keydown', this._handleEscClose);
         super.setEventListeners();
         document.querySelector(this._popupSelector).addEventListener('submit', this._submitFormCallback);
-/*        document.addEventListener('keydown', (evt) => {
-            if (evt.code === ESC) {
-                this.close();
-            }
-        });*/
-
     }
 }
