@@ -16,7 +16,8 @@ module.exports = {
         contentBase: path.resolve(__dirname, './dist'),
         compress: true,
         port: 8080,
-        open: true
+        open: true,
+        liveReload: true,
     },
     module: {
         rules: [ // rules — это массив правил
@@ -54,5 +55,6 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin() // подключение плагина для объединения файлов
-    ] // добавьте массив
+    ], // добавьте массив,
+    devtool: "inline-source-map",
 };

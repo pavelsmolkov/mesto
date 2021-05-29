@@ -81,7 +81,9 @@ addPopup.setEventListeners();
 const defaultCardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const newCard = new Card(item, '.item-template', handleImageClick);
+    const newCard = new Card(item, '.item-template', (name, link) => {
+      previewPopup.open(name, link);
+    });
     const cardElement = newCard.createCard();
     defaultCardList.addItem(cardElement);
   }}, '.cards');
@@ -97,23 +99,17 @@ function handleAddCardFormSubmit() {
   const userCard = new Section({
     items: data,
     renderer: (data) => {
-      const newCard = new Card(data, '.item-template', handleImageClick);
+      const newCard = new Card(data, '.item-template', (link, name) => {
+          previewPopup.open(name, link);
+        });
       const cardElement = newCard.createCard();
       userCard.addUserItem(cardElement);
     }}, '.cards');
-
   userCard.renderItem();
 }
 
 const previewPopup = new PopupWithImage('.popup_preview');
 previewPopup.setEventListeners();
-
-function handleImageClick(cardElement, name, link) {
-  const cardImage = cardElement.querySelector('.card__image');
-  cardImage.addEventListener('click', function (evt) {
-    previewPopup.open(link, name);
-  });
-}
 
 const userInfo = new UserInfo(userInputSelector);
 
