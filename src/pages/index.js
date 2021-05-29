@@ -8,7 +8,7 @@ import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
-export { ESC, addCardForm, editProfileForm };
+export { addCardForm, editProfileForm };
 
 const config = {
   formSelector: '.popup__form',
@@ -69,7 +69,6 @@ const createButton = document.querySelector('.popup__create-button');
 const cardInputName = document.querySelector('.popup__field_input_place');
 const cardInputImage = document.querySelector('.popup__field_input_url');
 const documentPage = document.querySelector('.page');
-const ESC = 'Escape';
 const userInputSelector = {
   nameUserSelector: '.profile__title',
   jobUserSelector: '.profile__subtitle'
@@ -99,7 +98,7 @@ function handleAddCardFormSubmit() {
   const userCard = new Section({
     items: data,
     renderer: (data) => {
-      const newCard = new Card(data, '.item-template', (link, name) => {
+      const newCard = new Card(data, '.item-template', (name, link) => {
           previewPopup.open(name, link);
         });
       const cardElement = newCard.createCard();
