@@ -8,6 +8,7 @@ export default class PopupWithImage extends Popup {
     }
 
     open(name, link) {
+        super.open();
         popupImage.src = link;
         popupText.textContent = name;
         popupImage.setAttribute('alt', name);

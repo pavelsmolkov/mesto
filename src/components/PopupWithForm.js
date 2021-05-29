@@ -9,10 +9,12 @@ export default class PopupWithForm extends Popup {
     }
 
     open() {
+        super.open();
         document.querySelector(this._popupSelector).classList.add('popup_opened');
     }
 
     close() {
+        super.close();
         this._data = this._getInputValues();
         editProfileForm.reset();
         addCardForm.reset();
