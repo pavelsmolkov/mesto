@@ -134,15 +134,15 @@ addButton.addEventListener('click', () => {
 });
 
 //слушатель кнопки закрытия попапа редактирования профиля
-closeButtonEdit.addEventListener('click', () => editPopup.close());
+// closeButtonEdit.addEventListener('click', () => editPopup.close());
 
 //слушатель кнопки закрытия попапа новой карточки
-closeButtonAdd.addEventListener('click', () => addPopup.close());
+// closeButtonAdd.addEventListener('click', () => addPopup.close());
 
 //слушатель кнопки закрытия попапа с превью картинки
-closeButtonPreview.addEventListener('click', () => {
-  previewPopup.close()
-});
+// closeButtonPreview.addEventListener('click', () => {
+//   previewPopup.close()
+// });
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((formElement) => {
