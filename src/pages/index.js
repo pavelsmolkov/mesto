@@ -8,7 +8,7 @@ import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
-export { addCardForm, editProfileForm };
+// export { addCardForm, editProfileForm };
 
 const config = {
   formSelector: '.popup__form',
@@ -95,17 +95,32 @@ function handleAddCardFormSubmit() {
   data.name = data.placeValue;
   data.link = data.urlValue;
 
-  const userCard = new Section({
-    items: data,
-    renderer: (data) => {
-      const newCard = new Card(data, '.item-template', (name, link) => {
-          previewPopup.open(name, link);
-        });
-      const cardElement = newCard.createCard();
-      userCard.addUserItem(cardElement);
-    }}, '.cards');
-  userCard.renderItem();
+  // const userCard = new Section({
+  //   items: data,
+  //   renderer: (data) => {
+  //     // const newCard = new Card(data, '.item-template', (name, link) => {
+  //     //
+  //     //     previewPopup.open(name, link);
+  //     //   });
+  //     // const cardElement = newCard.createCard();
+  //     // createNewCard(data);
+  //
+  //     defaultCardList.addUserItem(createNewCard(data));
+  //   }}, '.cards');
+  defaultCardList.addUserItem(createNewCard(data));
+
+  // defaultCardList.renderItem();
 }
+
+const createNewCard = (data) => {
+  const cardElement = new Card(data, ".item-template", (name, link) => {
+    previewPopup.open(name, link);
+  });
+  const cardEl = cardElement.createCard();
+  return cardEl;
+}
+
+
 
 const previewPopup = new PopupWithImage('.popup_preview');
 previewPopup.setEventListeners();

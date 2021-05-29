@@ -1,18 +1,17 @@
 import Popup from "./Popup.js";
-import { addCardForm, editProfileForm } from "../pages/index";
 
 export default class PopupWithForm extends Popup {
 
     constructor(popupSelector, submitFormCallback) {
         super(popupSelector);
         this._submitFormCallback = submitFormCallback;
+
     }
 
     close() {
         super.close();
         this._data = this._getInputValues();
-        editProfileForm.reset();
-        addCardForm.reset();
+        this._form.reset();
         document.querySelector(this._popupSelector).classList.remove('popup_opened');
         return this._data;
     }
@@ -28,6 +27,10 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        document.querySelector(this._popupSelector).addEventListener('submit', this._submitFormCallback);
+        this._form.addEventListener("submit", () => {
+            this._submitFormCallback(this._getInputValues());
+            this.close();
+        });
+        // document.querySelector(this._popupSelector).addEventListener('submit', this._submitFormCallback);
     }
 }

@@ -4,6 +4,7 @@ export default class Popup {
         this._keyEscape  = 'Escape';
         this._handleEscClose = this._handleEscClose.bind(this);
         this._popup = document.querySelector(popupSelector);
+        this._form = this._popup.querySelector(".popup__form");
     }
 
     open() {
