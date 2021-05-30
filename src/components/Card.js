@@ -21,16 +21,16 @@ export default class Card {
 
     createCard() {
         this._element.querySelector('.card__header').textContent = this._name;
-        this._element.querySelector('.card__image').setAttribute('src', this._link);
-        this._element.querySelector('.card__image').setAttribute('alt', this._name);
+        this._image.setAttribute('src', this._link);
+        this._image.setAttribute('alt', this._name);
 
-        this._setEventListeners(this._name, this._link);
+        this._setEventListeners();
         return this._element;
     }
 
-    _setEventListeners(name, link) {
+    _setEventListeners() {
         this._image.addEventListener("click", () => {
-            this._handleImageClick(name, link);
+            this._handleImageClick(this._name, this._link);
         });
 
         this._cardLike.addEventListener('click', function (evt) {

@@ -3,8 +3,8 @@ export default class PopupWithImage extends Popup {
 
     constructor(popupSelector) {
         super(popupSelector);
-        this._popupImage = document.querySelector('.popup__image');
-        this._popupText = document.querySelector('.popup__imagetext');
+        this._popupImage = this._popup.querySelector('.popup__image');
+        this._popupText = this._popup.querySelector('.popup__imagetext');
     }
 
     open(name, link) {
@@ -12,6 +12,5 @@ export default class PopupWithImage extends Popup {
         this._popupImage.src = link;
         this._popupText.textContent = name;
         this._popupImage.setAttribute('alt', name);
-        document.querySelector(this._popupSelector).classList.add('popup_opened');
     }
 }

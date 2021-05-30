@@ -19,32 +19,28 @@ import {
 const addPopup = new PopupWithForm('.popup_add', handleAddCardFormSubmit);
 addPopup.setEventListeners();
 
-const defaultCardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const newCard = new Card(item, '.item-template', (name, link) => {
-      previewPopup.open(name, link);
-    });
-    const cardElement = newCard.createCard();
-    defaultCardList.addItem(cardElement);
-  }}, '.cards');
-
-defaultCardList.renderItems();
-
-function handleAddCardFormSubmit(data) {
-  addPopup.close(addCardForm);
-
-  data.name = data.placeValue;
-  data.link = data.urlValue;
-  defaultCardList.addUserItem(createNewCard(data));
-}
-
 const createNewCard = (data) => {
   const cardElement = new Card(data, ".item-template", (name, link) => {
     previewPopup.open(name, link);
   });
   const cardEl = cardElement.createCard();
   return cardEl;
+}
+
+const defaultCardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    defaultCardList.addItem(createNewCard(item));
+  }}, '.cards');
+
+defaultCardList.renderItems();
+
+function handleAddCardFormSubmit(data) {
+  addPopup.close();
+
+  data.name = data.placeValue;
+  data.link = data.urlValue;
+  defaultCardList.addUserItem(createNewCard(data));
 }
 
 const previewPopup = new PopupWithImage('.popup_preview');
@@ -55,7 +51,7 @@ const userInfo = new UserInfo(userInputSelector);
 //обработчик отправки формы профиля
 function handleProfileFormSubmit (data) {
   userInfo.setUserInfo(data.nameValue, data.jobValue);
-  editPopup.close(editProfileForm);
+  editPopup.close();
 }
 
 // слушатель кнопки открытия попапа редактирования профиля
