@@ -3,7 +3,7 @@ export default class Popup {
         this._popupSelector = popupSelector;
         this._keyEscape  = 'Escape';
         this._handleEscClose = this._handleEscClose.bind(this);
-        this._popup = document.querySelector(popupSelector);
+        this._popup = document.querySelector(this._popupSelector);
     }
 
     open() {

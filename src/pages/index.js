@@ -16,9 +16,8 @@ import {
   jobInput
 } from "../utils/Constants.js";
 
-const addPopup = new PopupWithForm('.popup_add', handleAddCardFormSubmit);
-addPopup.setEventListeners();
-
+//функциональность карточек
+//универсальная функция создания карточек
 const createNewCard = (data) => {
   const cardElement = new Card(data, ".item-template", (name, link) => {
     previewPopup.open(name, link);
@@ -27,25 +26,25 @@ const createNewCard = (data) => {
   return cardEl;
 }
 
+//создание и отрисовка дефолтных карточек из массива
 const defaultCardList = new Section({
   items: initialCards,
   renderer: (item) => {
     defaultCardList.addItem(createNewCard(item));
   }}, '.cards');
-
 defaultCardList.renderItems();
 
-function handleAddCardFormSubmit(data) {
-  addPopup.close();
-
-  data.name = data.placeValue;
-  data.link = data.urlValue;
-  defaultCardList.addUserItem(createNewCard(data));
-}
-
+//создание модальных окон
 const previewPopup = new PopupWithImage('.popup_preview');
 previewPopup.setEventListeners();
 
+const editPopup = new PopupWithForm('.popup_edit', handleProfileFormSubmit);
+editPopup.setEventListeners();
+
+const addPopup = new PopupWithForm('.popup_add', handleAddCardFormSubmit);
+addPopup.setEventListeners();
+
+//объект с данными о пользователе
 const userInfo = new UserInfo(userInputSelector);
 
 //обработчик отправки формы профиля
@@ -54,6 +53,15 @@ function handleProfileFormSubmit (data) {
   editPopup.close();
 }
 
+//обработчик создания и отрисовки пользовательской карточки
+function handleAddCardFormSubmit(data) {
+  addPopup.close();
+  data.name = data.placeValue;
+  data.link = data.urlValue;
+  defaultCardList.addUserItem(createNewCard(data));
+}
+
+// обработчики кнопок
 // слушатель кнопки открытия попапа редактирования профиля
 editButton.addEventListener('click', () => {
   const currentUserInfo = userInfo.getUserInfo();
@@ -62,12 +70,12 @@ editButton.addEventListener('click', () => {
   editPopup.open();
 });
 
-//слушатель кнопки добавления новой карточки (Создать)
+//слушатель кнопки Создать (добавление новой карточки)
 addButton.addEventListener('click', () => {
-  // document.forms.addCardForm.reset();
   addPopup.open();
 });
 
+// валидация форм
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((formElement) => {
   formElement.addEventListener('submit', function (evt) {
@@ -78,6 +86,3 @@ formList.forEach((formElement) => {
   formValidate.enableValidation();
   formValidate.disableSubmitButton();
 });
-
-const editPopup = new PopupWithForm('.popup_edit', handleProfileFormSubmit);
-editPopup.setEventListeners();
